@@ -13,7 +13,7 @@ import {
   Paragraph,
 } from "../../styles/GlobalStyles";
 
-import avatar from "../../images/B612_20171223_203832.jpg";
+import avatar from "../../images/avatar.jpg";
 
 export default function Bio() {
   return (

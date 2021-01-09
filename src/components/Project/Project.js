@@ -17,7 +17,7 @@ export default function Project(props) {
   return (
     <ProjectWrapper>
       <ImageContainer index={index}>
-        <Image src={`/images/${image}`} />
+        <Image src={`./images/${image}`} />
       </ImageContainer>
       <DescriptionContainer>
         <ProjectName>{name}</ProjectName>
