@@ -11,7 +11,7 @@ export let DarkModeWrapper = styled.div`
   }
   @media only screen and (max-width: 40rem) {
     left: 50%;
-    bottom: 3rem;
+    bottom: 8rem;
     transform: translateX(-50%);
   }
   input {

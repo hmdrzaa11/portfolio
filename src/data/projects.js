@@ -1,17 +1,17 @@
 let projects = [
   {
-    name: "Natours",
-    description: `s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the`,
+    name: "Portfolio",
+    description: `This very website you're now watching, created with React and Styled-Components and hosted on github pages with ability of choosing dark or light theme `,
     githubLink: "https://github.com/hmdrzaa11",
-    image: "storeLocator.png",
-    stack: ["Node", "Express", "React", "MongoDB", "Mongoose"],
+    image: "portfolio.png",
+    stack: ["React", "Styled-Components"],
   },
   {
-    name: "Chat",
-    description: `s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the`,
+    name: "Maze",
+    description: `This is the Maze game which written in Vanilla js and i kept it very simple and its only in dark version`,
     githubLink: "https://github.com/hmdrzaa11",
-    image: "natour.png",
-    stack: ["Node", "Express", "React", "MongoDB", "Mongoose"],
+    image: "maze.png",
+    stack: ["Javascript", "Matter.js"],
   },
 ];
 export default projects;
