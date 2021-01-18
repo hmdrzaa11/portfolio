@@ -2,7 +2,7 @@ let projects = [
   {
     name: "Portfolio",
     description: `This very website you're now watching, created with React and Styled-Components and hosted on github pages with ability of choosing dark or light theme `,
-    githubLink: "https://github.com/hmdrzaa11",
+    githubLink: "https://github.com/hmdrzaa11/maze",
     image: "portfolio.png",
     stack: ["React", "Styled-Components"],
   },
