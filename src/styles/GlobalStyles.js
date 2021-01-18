@@ -12,30 +12,25 @@ let GlobalStyles = createGlobalStyle`
         font-family:"Roboto",sans-serif;
         font-weight:300;
         line-height:1.7;
-        color:${(props) => props.theme.colors.colorPrimary}
+        color:${(props) => props.theme.colors.colorPrimary};
+        
     }
 `;
 
-export let Container = styled.div`
-  padding: 10rem 20rem;
-`;
-
-export let HeaderPrimary = styled.h1`
-  font-size: 3rem;
-  font-weight: bold;
-  color: ${(props) => props.theme.colors.colorPrimary};
-`;
 export let HeaderSecondary = styled.h3`
   font-size: 1.4rem;
   color: ${(props) => props.theme.colors.colorPrimaryLightest};
   margin-top: -1rem;
-`;
-
-export let HeaderTertiary = styled(HeaderSecondary)`
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: 0.8rem;
-  color: ${(props) => props.theme.colors.colorPrimary};
+  @media only screen and (max-width: 1220px) {
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 1140px) {
+    text-align: center;
+    margin: 0.5rem;
+  }
+  @media only screen and (max-width: 1220px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export let Paragraph = styled.p`
@@ -43,6 +38,12 @@ export let Paragraph = styled.p`
   font-weight: 300;
   font-size: 1.2rem;
   margin-top: 2rem;
+  @media only screen and (max-width: 1220px) {
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 1220px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export let GithubButton = styled.a`
@@ -67,6 +68,15 @@ export let GithubButton = styled.a`
   }
   &:active {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+`;
+
+export let Container = styled.div`
+  padding: 5rem 8rem;
+  margin: 8rem 0;
+  @media only screen and (min-width: 360px) {
+    padding: 3rem 2rem;
+    margin: 3rem 0;
   }
 `;
 

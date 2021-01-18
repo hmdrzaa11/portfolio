@@ -1,27 +1,44 @@
-import React, { useState } from "react";
-import { HamburgerMenu, Nav, NavItem, NavList, Sidebar } from "./Navbar.styles";
+import React, { useEffect, useState } from "react";
+import { Nav } from "./Navbar.styles";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import DarkMode from "../DarkMode/DarkMode";
+import { CSSTransition } from "react-transition-group";
+const sections = ["about", "portfolio", "contact"];
 
 let Navbar = () => {
+  let [startAnimate, setStartAnimate] = useState(false);
+  let [toggleHamburger, setToggleHamburger] = useState(false);
   let handleNavClick = (id) => {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    setToggleHamburger(false);
   };
-  let [toggleHamburger, setToggleHamburger] = useState(false);
-  let toggleSideDrawer = () => setToggleHamburger(!toggleHamburger);
+  useEffect(() => {
+    setStartAnimate(true);
+  }, []);
+
+  let renderNavSections = sections.map((sec) => (
+    <CSSTransition
+      key={sec}
+      in={startAnimate}
+      timeout={1000}
+      classNames="fade"
+      mountOnEnter
+    >
+      <li onClick={() => handleNavClick(sec)}>{sec}</li>
+    </CSSTransition>
+  ));
+
+  let handleToggleClick = () => {
+    setToggleHamburger(!toggleHamburger);
+  };
+
   return (
-    <Nav>
-      <HamburgerMenu
-        onClick={toggleSideDrawer}
-        className={toggleHamburger ? "fa fa-times" : "fa fa-bars"}
-      />
-      <Sidebar show={toggleHamburger}>
-        <HamburgerMenu onClick={toggleSideDrawer} className={"fa fa-times"} />
-        wolf
-      </Sidebar>
-      <NavList>
-        <NavItem onClick={() => handleNavClick("about")}>About</NavItem>
-        <NavItem onClick={() => handleNavClick("portfolio")}>Portfolio</NavItem>
-        <NavItem onClick={() => handleNavClick("contact")}>Contact</NavItem>
-      </NavList>
+    <Nav open={toggleHamburger}>
+      <ul>
+        {renderNavSections}
+        <DarkMode />
+      </ul>
+      <BurgerMenu open={toggleHamburger} handleClick={handleToggleClick} />
     </Nav>
   );
 };

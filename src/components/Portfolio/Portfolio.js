@@ -1,17 +1,18 @@
-import React from "react";
-import { PortfolioWrapper, ProjectContainer } from "./Portfolio.styles";
-import { HeaderPrimary, HeaderSecondary } from "../../styles/GlobalStyles";
-import Project from "../Project/Project";
+import React, { useContext } from "react";
 import projects from "../../data/projects";
+import { PortfolioWrapper } from "./Portfolio.styles";
+import Project from "../Project/Project";
+import { darkModeContext } from "../../context/darkModeContext";
 export default function Portfolio() {
-  let projectSections = projects.map((pro, index) => (
-    <Project key={pro.name} project={{ ...pro, index }} />
-  ));
+  let darkMode = useContext(darkModeContext);
+  let renderProjects = projects.map((proj, index) => {
+    return <Project key={proj.name} project={proj} index={index} />;
+  });
   return (
-    <PortfolioWrapper id="portfolio">
-      <HeaderPrimary>Portfolio</HeaderPrimary>
-      <HeaderSecondary>Check what I've been doing lately</HeaderSecondary>
-      <ProjectContainer>{projectSections}</ProjectContainer>
+    <PortfolioWrapper id="portfolio" dark={darkMode.darkMode}>
+      <h1 className="heading">Portfolio</h1>
+      <h4 className="heading-sub">Check what I've been doing lately</h4>
+      <div className="project-wrapper">{renderProjects}</div>
     </PortfolioWrapper>
   );
 }

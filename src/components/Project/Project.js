@@ -1,34 +1,35 @@
-import React from "react";
-import {
-  DescriptionContainer,
-  Image,
-  ImageContainer,
-  ProjectWrapper,
-  Description,
-  TechStack,
-  Stack,
-  ProjectName,
-} from "./Project.styles";
-
-import { GithubButton } from "../../styles/GlobalStyles";
+import React, { useContext } from "react";
+import { ProjectWrapper } from "./Project.styles";
+import { darkModeContext } from "../../context/darkModeContext";
 
 export default function Project(props) {
-  let { name, description, githubLink, image, index, stack } = props.project;
+  let darkMode = useContext(darkModeContext);
+  let { name, description, githubLink, image, stack } = props.project;
+  let stackString = stack.join(" - ");
+
   return (
-    <ProjectWrapper>
-      <ImageContainer index={index}>
-        <Image src={`./images/${image}`} />
-      </ImageContainer>
-      <DescriptionContainer>
-        <ProjectName>{name}</ProjectName>
-        <Description>{description}</Description>
-        <TechStack>
-          <Stack>{stack.join(" - ")}</Stack>
-        </TechStack>
-        <GithubButton href={githubLink} target="_blank">
-          <i className="fab fa-github" /> Source
-        </GithubButton>
-      </DescriptionContainer>
+    <ProjectWrapper index={props.index} dark={darkMode.darkMode}>
+      <h1 className="project-heading">{name}</h1>
+      <div className="side">
+        <div className="left">
+          <div className="image-wrapper">
+            <img
+              className="project-image"
+              src={`./images/${image}`}
+              alt={name}
+            />
+          </div>
+        </div>
+        <div className="right">
+          <p className="description">{description}</p>
+          <h4 className="stack">{stackString}</h4>
+          <div className="cta">
+            <a href={githubLink} target="blank" className="github-btn">
+              <i className="fab fa-github" /> <span>Source</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </ProjectWrapper>
   );
 }

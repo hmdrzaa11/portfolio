@@ -1,20 +1,23 @@
-import React from "react";
-import About from "./components/About/About";
+import React, { useContext } from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Portfolio from "./components/Portfolio/Portfolio";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
+import { darkModeContext } from "./context/darkModeContext";
+import { AppWrapper } from "./App.styles";
 
+import AboutSection from "./components/AboutSection/AboutSection";
 export default function App() {
+  let darkMode = useContext(darkModeContext);
   return (
-    <div>
+    <AppWrapper dark={darkMode.darkMode}>
       <Navbar />
       <Header />
-      <About />
+      <AboutSection />
       <Portfolio />
       <ScrollTop />
       <Footer />
-    </div>
+    </AppWrapper>
   );
 }

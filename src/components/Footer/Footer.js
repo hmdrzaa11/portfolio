@@ -1,7 +1,6 @@
-import React from "react";
-import { Paragraph } from "../../styles/GlobalStyles";
+import React, { useContext } from "react";
+import { darkModeContext } from "../../context/darkModeContext";
 import {
-  FooterHeader,
   FooterWrapper,
   Email,
   FooterNav,
@@ -11,23 +10,47 @@ import {
 } from "./Footer.styles";
 
 const FooterNavIcons = [
-  { icon: "fab fa-github", href: "https://github.com/hmdrzaa11" },
-  { icon: "fab fa-instagram", href: "https://www.instagram.com/hmdrzadev/" },
-  { icon: "fab fa-linkedin-in", href: "https://www.linkedin.com/in/hmdrza11/" },
+  {
+    icon: "fab fa-github",
+    href: "https://github.com/hmdrzaa11",
+    iconColor: "#4078c0",
+  },
+  {
+    icon: "fab fa-instagram",
+    href: "https://www.instagram.com/hmdrzadev/",
+    iconColor: "#bc2a8d",
+  },
+  {
+    icon: "fab fa-linkedin-in",
+    href: "https://www.linkedin.com/in/hmdrza11/",
+    iconColor: "#0e76a8",
+  },
 ];
 
 export default function Footer() {
+  let darkMode = useContext(darkModeContext);
   let renderFooterNav = FooterNavIcons.map((icon) => (
     <FooterNavItem key={icon.icon}>
-      <FooterNavLink href={icon.href} target="_blank">
+      <FooterNavLink
+        dark={darkMode.darkMode}
+        href={icon.href}
+        target="_blank"
+        iconColor={icon.iconColor}
+      >
         <i className={icon.icon} />
       </FooterNavLink>
     </FooterNavItem>
   ));
   return (
-    <FooterWrapper id="contact">
-      <FooterHeader>Contact Me</FooterHeader>
-      <Paragraph>If you want to talk, you can find me at:</Paragraph>
+    <FooterWrapper id="contact" dark={darkMode.darkMode}>
+      <h3>Contact Me</h3>
+      <div className="text-wrapper">
+        <p className="footer-detail">
+          Feel free to reach out if you’re in need of a Developer. Whether that
+          means you need a website, web app, or you’re looking to fill a
+          full-time position. I’m always open to a conversation
+        </p>
+      </div>
       <Email href="mailto:hmdrzadev@gmail.com">hmdrzadev@gmail.com</Email>
       <FooterNav>{renderFooterNav}</FooterNav>
       <Copyright>&copy;Oujand,2020</Copyright>
